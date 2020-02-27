@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--tehdään painikkeesta vähän mukavamman näköinen tekemällä
+ uusi kuvio joka koostuu androidin valmiista
+ neliöstä jossa on pyöristetyt kulmat ja asetetaan väri-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#00DAFF" />
+    <corners android:bottomRightRadius="32dp"
+        android:bottomLeftRadius="32dp"
+        android:topRightRadius="32dp"
+        android:topLeftRadius="32dp"/>
+</shape>

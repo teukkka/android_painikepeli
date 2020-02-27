@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".setNameActivity"
+    tools:showIn="@layout/activity_set_name">
+
+    <Button
+        android:id="@+id/setName_button"
+        android:layout_width="124dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="165dp"
+        android:text="@string/setName_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/getName_editText" />
+
+    <EditText
+        android:id="@+id/getName_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="76dp"
+        android:ems="10"
+        android:hint="@string/hint_editText"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

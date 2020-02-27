@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Painikepeli</string>
+    <string name="painike_text">Painike</string>
+    <string name="ohjeet_text">ohjeet</string>
+    <string name="title_activity_set_name">setNameActivity</string>
+    <string name="hint_editText">Kirjoita nimesi tähän</string>
+    <string name="setName_button">aseta nimi</string>
+    <string name="pisteet">Pisteet: %d</string>
+    <string name="pelaajan_nimi">Pelaaja: %s</string>
+    <string name="palkintoon">Seuraavaan palkintoon: %d painallusta</string>
+    <string name="uusi_peli">Uusi peli</string>
+    <string name="voitto_text">Voitit %d pistettä</string>
+</resources>
