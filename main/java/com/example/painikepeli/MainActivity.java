@@ -71,42 +71,53 @@ public class MainActivity extends AppCompatActivity {
             display_prefs();
         }
 
-
+        //handler joka käsittelee serversocketilta palaavan viestin
         final Handler handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
+                //asettaa painikkeen taas toimivaksi
+                painike.setEnabled(true);
+                //tarkistaa saatiinko palvelimelta vastausta joka osattiin käsitellä oikein
                 if (msg.what == 1) {
                     Bundle bundle = msg.getData();
                     if (bundle != null) {
+                        //tallennetaan vastaus muuttujaan
                         String response = bundle.getString("KEY_RESPONSE_TEXT");
                         Log.d("handler response:", response);
                         try {
+                            //tehdään merkkijonosta JSON olio koska palvelin palauttaa viestin JSONina
                             JSONObject json = new JSONObject(response);
+                            //tarkistetaan palauttiko palvelin tiedon virheestä
                             if (json.getString("error").equals("true")) {
                                 Toast.makeText(getApplicationContext(), "tapahtui virhe yritä uudestaan.", Toast.LENGTH_LONG).show();
-                                painike.setEnabled(true);
                             } else {
-                                painike.setEnabled(true);
+                                //jos virhettä ei tapahtunut luetaan JSON oliosta palvelimen palauttamat
+                                //pisteet ja painallusten määrä seuraavaan voittoon
                                 setScore(json.getInt("pisteet"));
                                 Log.d("pisteet", String.valueOf(json.getInt("pisteet")));
                                 setToNextPrize(json.getInt("voittoon"));
+                                //päivitetään näkymä
                                 display_prefs();
+                                //tarkistetaan jos palvelin ilmoitti pelaajan saaneen palkinnon
+                                //ja ilmoiteteaan pelaajalle
                                 Integer prize = json.getInt("voitto");
                                 if (prize>0){
                                     Log.d("voitto:", String.valueOf(prize));
                                     youWonPrize(prize);
+
+                                //jos voittoa ei kuitenkaan tullut piilotetaan tekstikenttä pelaajalta
                                 }  else {
                                     voitto_textView.setVisibility(View.GONE);
                                 }
                             }
                         } catch (JSONException ex) {
                             Log.e("JSON_ERROR", ex.getMessage(), ex);
+                            Toast.makeText(getApplicationContext(),"jotain meni vikaan yritä uudestaan", Toast.LENGTH_LONG).show();
                         }
                     }
                 } else {
                     Log.d("Virhe", "ei vastausta palvelimelta");
                     Toast.makeText(getApplicationContext(),"jotain meni vikaan yritä uudestaan", Toast.LENGTH_LONG).show();
-                    painike.setEnabled(true);
                 }
             }
         };

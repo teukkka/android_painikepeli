@@ -46,8 +46,8 @@ public class serversocket {
                     URL url = new URL(address);
                     httpsConnection = (HttpURLConnection) url.openConnection();
                     httpsConnection.setRequestMethod("POST");
-                    httpsConnection.setConnectTimeout(5000);
-                    httpsConnection.setReadTimeout(5000);
+                    httpsConnection.setConnectTimeout(10000);
+                    httpsConnection.setReadTimeout(10000);
                     httpsConnection.setDoOutput(true);
                     httpsConnection.connect();
                     Log.d("params", params);
@@ -61,7 +61,7 @@ public class serversocket {
 
                     //luetaan palvelimen vastauskoodi esim 200 ok tai 500 server error
                     int responseCode = httpsConnection.getResponseCode();
-                    Log.d("Test:",Integer.toString(responseCode));
+                    Log.d("RESPONSE CODE:",Integer.toString(responseCode));
 
                     //jos palvelin vastaa yhteyden onnistuneen luetaan palvelimen palauttama vastaus
                     if (responseCode == HttpsURLConnection.HTTP_OK) {
@@ -106,6 +106,7 @@ public class serversocket {
                     handler.sendEmptyMessage(2);
                 } finally {
                     httpsConnection.disconnect();
+                    Log.d("DISCONNECTED","TRUE");
 
                 }
 
